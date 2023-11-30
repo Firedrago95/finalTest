@@ -18,7 +18,7 @@ public static Map<String, Integer> readOrder() throws IllegalArgumentException {
                 .map(menu -> menu.split("-"))
                 .collect(Collectors.toMap(menuInfo -> menuInfo[0],
                     menuInfo -> Integer.parseInt(menuInfo[1])));
-        } catch (IllegalStateException e) {
+        } catch (IllegalStateException e) { //IllegalStateException 발생
             throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER.getMessage());
         }
     }
