@@ -7,7 +7,7 @@ private static void validateDuplicates(List<Integer>numbers) throws IllegalArgum
 }
 ```
 
-- 문자열 Map 변환
+- 문자열 Map 변환 (IllegalStateException 처리 주의)
 ```java
 public static Map<String, Integer> readOrder() throws IllegalArgumentException {
         System.out.println(ConsoleMessage.REQUEST_ORDER.message);
