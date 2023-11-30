@@ -15,3 +15,10 @@ Arrays.stream(input.split(","))
   .collect(Collectors.toMap(menu -> menu[0],
     menu -> Integer.parseInt(menu[1]))); 
 ```
+- enum 이름 포함 찾기
+```java
+private boolean isContain(String menuName) {
+  return Arrays.stream(values())
+      .anyMatch(menu -> menu.equals(menuName);
+}
+```
