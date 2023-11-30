@@ -9,11 +9,19 @@ private static void validateDuplicates(List<Integer>numbers) throws IllegalArgum
 
 - 문자열 Map 변환
 ```java
-String input = "티본스테이크-1,초코케이크-2,제로콜라-2"
-Arrays.stream(input.split(","))
-  .map(order -> order.split("-")
-  .collect(Collectors.toMap(menu -> menu[0],
-    menu -> Integer.parseInt(menu[1]))); 
+public static Map<String, Integer> readOrder() throws IllegalArgumentException {
+        System.out.println(ConsoleMessage.REQUEST_ORDER.message);
+        String input = Console.readLine().trim();
+        InputValidator.validateOrder(input);
+        try { // 반드시 예외처리 해야한다. (중복된 키값 예외발생 처리)
+            return Arrays.stream(input.split(","))
+                .map(menu -> menu.split("-"))
+                .collect(Collectors.toMap(menuInfo -> menuInfo[0],
+                    menuInfo -> Integer.parseInt(menuInfo[1])));
+        } catch (IllegalStateException e) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER.getMessage());
+        }
+    }
 ```
 - enum 이름 포함 찾기
 ```java
