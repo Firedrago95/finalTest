@@ -43,8 +43,6 @@ public class InputValidator {
     }
 ```
 ```java
-package christmas.util;
-
 public enum ExceptionMessage {
     /*예외 메세지 추가*/
     NULL_OR_EMPTY("[ERROR] 값을 입력해주세요");
