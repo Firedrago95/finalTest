@@ -41,6 +41,17 @@ public class InputValidator {
             throw new IllegalArgumentException(ExceptionMessage.NULL_OR_EMPTY.getMessage());
         }
     }
+
+/* 테스트 코드 */
+public class InputValidatorTest {
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", "a", "pasta-1", "제로콜라-하나"})
+    @NullSource
+    void 예외발생_테스트(String input) {
+        assertThatThrownBy(() -> InputValidator.validateOrder(input));
+    }
+}
 ```
 ```java
 public enum ExceptionMessage {
