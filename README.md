@@ -27,7 +27,7 @@ public class InputValidator {
 
     public static void validate/*도메인*/(String input) throws IllegalArgumentException {
         validateNullOrEmpty(input);
-        validateDateForm(input);
+        validate/*도메인*/Form(input);
     }
 
     private static void validate/*도메인*/Form(String input) throws IllegalArgumentException {
