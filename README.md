@@ -66,8 +66,7 @@ public enum ExceptionMessage {
 public class InputView {
 
     private enum ConsoleMessage {
-        REQUEST_DATE("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)"),
-        REQUEST_ORDER("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)");
+        REQUEST_ORDER(/*출력 메세지는 문제에서 복붙하자*/);
 
         private final String message;
 
@@ -76,20 +75,13 @@ public class InputView {
         }
     }
 
-    public static int readDate() throws IllegalArgumentException {
-        System.out.println(ConsoleMessage.REQUEST_DATE.message);
-        String input = Console.readLine().trim();
-        InputValidator.validateDate(input);
-        return Integer.parseInt(input);
-    }
-
     public static Map<String, Integer> readOrder() throws IllegalArgumentException {
         System.out.println(ConsoleMessage.REQUEST_ORDER.message);
         String input = Console.readLine().trim();
         InputValidator.validateOrder(input);
         return convertStringToMap(input);
     }
-
+    // 문자열 -> Map<String, Integer> 형변환 (예외발생 주의)
     private static Map<String, Integer> convertStringToMap(String input) {
         try {
             return Arrays.stream(input.split(","))
