@@ -41,6 +41,7 @@ public class InputValidator {
             throw new IllegalArgumentException(ExceptionMessage.NULL_OR_EMPTY.getMessage());
         }
     }
+}
 
 /* 테스트 코드 */
 public class InputValidatorTest {
