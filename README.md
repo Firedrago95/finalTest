@@ -61,10 +61,10 @@ public enum ExceptionMessage {
 #### InputView 작성
 
 - `ConsoleMessage` private enum 으로 출력메세지 관리
-- 1. 입력메세지출력 ,
-  2. 문자열 받아오기
-  3. 입력 유효성검사(InputValidator)
-  4. 자료형 변환
+1. 입력메세지출력
+2. 문자열 받아오기
+3. 입력 유효성검사 (InputValidator)
+4. 자료형 변환 후 리턴
 ```java
 public class InputView {
 
