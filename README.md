@@ -19,6 +19,7 @@
 
 - `controller` `model` `util` `view` 패키지 생성
 - `util` 패키지 안에 `validator` 패키지 생성
+- `util` 패키지 안에 `ExceptionMessage` enum 클래스 생성
 - `InputValidator` 와 `도메인Validator` 클래스 생성
 ```java
 public class InputValidator {
@@ -40,5 +41,22 @@ public class InputValidator {
             throw new IllegalArgumentException(ExceptionMessage.NULL_OR_EMPTY.getMessage());
         }
     }
+```
+```java
+package christmas.util;
+
+public enum ExceptionMessage {
+    /*예외 메세지 추가*/
+    NULL_OR_EMPTY("[ERROR] 값을 입력해주세요");
+
+    private final String message;
+
+    ExceptionMessage(String message) {this.message = message;}
+
+    public String getMessage() {
+        return message;
+    }
+}
+
 ```
 
