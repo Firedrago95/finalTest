@@ -21,4 +21,26 @@
 
 - `controller` `model` `util` `view` 패키지 생성
 - `util` 패키지 안에 `validator` 패키지 생성
+- `InputValidator` 와 `도메인Validator` 클래스 생성
+```java
+public class InputValidator {
+    private static final Pattern dateRegex = Pattern.compile(/*정규식*/);
+
+    public static void validate/*도메인*/(String input) throws IllegalArgumentException {
+        validateNullOrEmpty(input);
+        validateDateForm(input);
+    }
+
+    private static void validate/*도메인*/Form(String input) throws IllegalArgumentException {
+        if (!orderRegex.matcher(input).matches()) {
+            throw new IllegalArgumentException(ExceptionMessage.에러메시지.getMessage());
+        }
+    }
+
+    private static void validateNullOrEmpty(String input) throws IllegalArgumentException {
+        if (input == null || input.equals("")) {
+            throw new IllegalArgumentException(ExceptionMessage.NULL_OR_EMPTY.getMessage());
+        }
+    }
+```
 
