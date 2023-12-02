@@ -116,3 +116,5 @@ public class InputView {
         }
     }
 ```
+#### OutputView 작성
+
