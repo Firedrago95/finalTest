@@ -21,7 +21,7 @@
 - `util` 패키지 안에 `validator` 패키지 생성
 - `util` 패키지 안에 `ExceptionMessage` enum 클래스 생성
 - `InputValidator` 와 `도메인Validator` 클래스 생성
-- **Test** 패키지 안에 `main`,`util` 생성
+- **Test** 패키지 안에 `model`,`util` 생성
 ```java
 public class InputValidator {
     private static final Pattern dateRegex = Pattern.compile(/*정규식*/);
