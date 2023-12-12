@@ -30,11 +30,19 @@ private boolean isContain(String menuName) {
       .anyMatch(menu -> menu.equals(menuName);
 }
 ```
-- list 와 list 같은 위치에 같은 값
+- list 와 list 같은 위치에 같은 값 찾기
 ```java
 private int countStrike(List<Integer> computer, List<Integer>user) {
   return (int) IntStream.rangeClosed(0,2)
     .filter(index -> computer.get(index) == user.get(index))
+    .count();
+}
+```
+- list와 list 같은 숫자 포함되는 갯수 찾기
+```java
+private int countSameNumber(List<Integer> computer, List<Integer> user) {
+  return (int) user.stream()
+    .filter(numer -> computer.contains(number))
     .count();
 }
 ```
