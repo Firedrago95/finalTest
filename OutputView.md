@@ -22,3 +22,13 @@ private static String getResult(Map<BallCount, Integer> count) {
   return ball + "볼 " + strike + "스트라이크";
 }
 ```
+- 0인 값을 빼고 싶을때
+```java
+private static void printDiscountList(Map<String, Integer> appliedDiscount) {
+  for (Map.Entry<String, Integer> discount : appliedDiscount.entrySet()) {
+    if (discount.getValue() != ZERO) {
+      System.out.println(discount.getKey() + ": " + "-" + convertFormatted(discount.getValue())+ CURRENCY);
+    }
+  }
+}
+```
