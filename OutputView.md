@@ -27,7 +27,8 @@ private static String getResult(Map<BallCount, Integer> count) {
 private static void printDiscountList(Map<String, Integer> appliedDiscount) {
   for (Map.Entry<String, Integer> discount : appliedDiscount.entrySet()) {
     if (discount.getValue() != ZERO) {
-      System.out.println(discount.getKey() + ": " + "-" + convertFormatted(discount.getValue())+ CURRENCY);
+      System.out.println(
+        discount.getKey() + ": " + "-" + convertFormatted(discount.getValue())+ CURRENCY);
     }
   }
 }
