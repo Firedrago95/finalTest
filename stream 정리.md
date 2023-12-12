@@ -6,7 +6,18 @@ private static void validateDuplicates(List<Integer>numbers) throws IllegalArgum
   }
 }
 ```
-
+- 숫자 List<Integer> 변환
+```java
+public static List<Integer> readUserNumber() throws IllegalArgumentException {
+  System.out.print(ConsoleMessage.USER_NUMBER_MESSAGE.message);
+  String input = Console.readLine().trim();
+  InputValidator.validateUserNumber(input);
+  return Arrays.stream(input.split(""))
+    .mapToInt(Integer::parseInt)
+    .boxed()
+    .toList();
+}
+```
 - 문자열 Map 변환 (IllegalStateException 처리 주의)
 ```java
 public static Map<String, Integer> readOrder() throws IllegalArgumentException {
