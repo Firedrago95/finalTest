@@ -22,6 +22,46 @@
 - `util` 패키지 안에 `ExceptionMessage` enum 클래스 생성
 - `InputValidator` 와 `도메인Validator` 클래스 생성
 - **Test** 패키지 안에 `model`,`util` 생성
+
+#### InputView 작성
+
+- `ConsoleMessage` private enum 으로 출력메세지 관리
+1. 입력메세지출력
+2. 문자열 받아오기
+3. 입력 유효성검사 (InputValidator)
+4. 자료형 변환 후 리턴
+```java
+public class InputView {
+
+    private enum ConsoleMessage {
+        REQUEST_ORDER(/*출력 메세지는 문제에서 복붙하자*/);
+
+        private final String message;
+
+        ConsoleMessage(String message) {
+            this.message = message;
+        }
+    }
+
+    public static Map<String, Integer> readOrder() throws IllegalArgumentException {
+        System.out.println(ConsoleMessage.REQUEST_ORDER.message);
+        String input = Console.readLine().trim();
+        InputValidator.validateOrder(input);
+        return convertStringToMap(input);
+    }
+    // 문자열 -> Map<String, Integer> 형변환 (예외발생 주의)
+    private static Map<String, Integer> convertStringToMap(String input) {
+        try {
+            return Arrays.stream(input.split(","))
+                .map(menu -> menu.split("-"))
+                .collect(Collectors.toMap(menuInfo -> menuInfo[0],
+                    menuInfo -> Integer.parseInt(menuInfo[1])));
+        } catch (IllegalStateException e) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER.getMessage());
+        }
+    }
+```
+- 입력 유효성 검사
 ```java
 public class InputValidator {
     private static final Pattern dateRegex = Pattern.compile(/*정규식*/);
@@ -78,44 +118,6 @@ public enum ExceptionMessage {
 
 ```
 
-#### InputView 작성
-
-- `ConsoleMessage` private enum 으로 출력메세지 관리
-1. 입력메세지출력
-2. 문자열 받아오기
-3. 입력 유효성검사 (InputValidator)
-4. 자료형 변환 후 리턴
-```java
-public class InputView {
-
-    private enum ConsoleMessage {
-        REQUEST_ORDER(/*출력 메세지는 문제에서 복붙하자*/);
-
-        private final String message;
-
-        ConsoleMessage(String message) {
-            this.message = message;
-        }
-    }
-
-    public static Map<String, Integer> readOrder() throws IllegalArgumentException {
-        System.out.println(ConsoleMessage.REQUEST_ORDER.message);
-        String input = Console.readLine().trim();
-        InputValidator.validateOrder(input);
-        return convertStringToMap(input);
-    }
-    // 문자열 -> Map<String, Integer> 형변환 (예외발생 주의)
-    private static Map<String, Integer> convertStringToMap(String input) {
-        try {
-            return Arrays.stream(input.split(","))
-                .map(menu -> menu.split("-"))
-                .collect(Collectors.toMap(menuInfo -> menuInfo[0],
-                    menuInfo -> Integer.parseInt(menuInfo[1])));
-        } catch (IllegalStateException e) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER.getMessage());
-        }
-    }
-```
 #### OutputView 작성
 
 #### 도메인 설계
