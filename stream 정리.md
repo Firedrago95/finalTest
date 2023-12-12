@@ -30,3 +30,11 @@ private boolean isContain(String menuName) {
       .anyMatch(menu -> menu.equals(menuName);
 }
 ```
+- list 와 list 같은 위치에 같은 값
+```java
+private int countStrike(List<Integer> computer, List<Integer>user) {
+  return (int) IntStream.rangeClosed(0,2)
+    .filter(index -> computer.get(index) == user.get(index))
+    .count();
+}
+```
